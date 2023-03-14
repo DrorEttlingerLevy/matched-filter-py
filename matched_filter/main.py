@@ -1,7 +1,11 @@
 import numpy as np
 
-def compute_threshold():
+def compute_threshold(input_signal, filter_length):
     print('Computing threshold...')
+    print(len(input_signal), filter_length)
+    portion = input_signal[:filter_length]
+    std = np.std(portion)
+    return std
 
 
 def matched_filter(s, h):
@@ -19,7 +23,5 @@ def matched_filter(s, h):
 
     # Compute the inverse Fourier transform of Y to obtain the time-domain output signal y
     y = np.fft.ifft(Y)
-
-    print(y)
 
     return y
