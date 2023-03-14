@@ -4,9 +4,16 @@ import signal_generator as sg
 
 def main():
 
-    noisy_signal = sg.generate_noisy_signal()
+    input_signal = sg.generate_signal(noisy = True)
+    filter_impulse_response = sg.generate_signal()
 
-    print(noisy_signal)
+    threshold = 0.9
+
+    y = matf.matched_filter(input_signal, filter_impulse_response)
+
+    peak = max(y)
+
+    print(peak > threshold)
 
 
 if __name__ == '__main__':
