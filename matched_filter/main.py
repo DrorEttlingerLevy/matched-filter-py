@@ -2,7 +2,6 @@ import numpy as np
 
 def compute_threshold(input_signal, filter_length):
     print('Computing threshold...')
-    print(len(input_signal), filter_length)
     portion = input_signal[:filter_length]
     std = np.std(portion)
     return std

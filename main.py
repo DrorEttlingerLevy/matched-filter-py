@@ -9,12 +9,15 @@ def main():
     y = matf.matched_filter(input_signal, filter_impulse_response)
 
     threshold = matf.compute_threshold(input_signal, len(filter_impulse_response))
-    print(threshold)
+    print(f"threshold: {threshold}")
 
     peak = max(y)
-    print(peak)
+    print(f"output peak: {peak}")
 
-    print(peak > threshold)
+    if peak > threshold:
+        print("Reference signal detected in noisy input signal")
+    else:
+        print("Signal not detected")
 
 
 if __name__ == '__main__':

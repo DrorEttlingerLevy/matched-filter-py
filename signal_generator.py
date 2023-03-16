@@ -25,13 +25,10 @@ def generate_signals() -> (np.ndarray):
     scale_factor = np.sqrt(signal_power / noise_power / (10**(snr/10)))
 
     # Add the noise to the signal
-    #noisy_signal = signal + noise * scale_factor
+    noisy_signal = signal + noise * scale_factor
 
-    # Add the signal to the noise at a certain point in time
-    random_signal = np.random.normal(scale=1, size=len(t))
-    signal_start_time = 0.5  # Time at which the signal starts
-    signal_start_sample = int(signal_start_time * fs)  # Sample index at which the signal starts
-    noisy_signal = np.concatenate((random_signal[:signal_start_sample], signal[:len(signal)-signal_start_sample] + noise[:len(signal)-signal_start_sample] * scale_factor, random_signal[signal_start_sample:]))
+    # random_signal = np.random.normal(scale=1, size=len(t))
+    # random_signal = random_signal + noise * scale_factor
 
     return signal, noisy_signal
     
