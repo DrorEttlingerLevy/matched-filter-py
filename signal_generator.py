@@ -1,6 +1,7 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
-def generate_signals() -> (np.ndarray):
+def generate_signals():
 
     # Define parameters
     fs = 1000  # Sampling frequency
@@ -20,6 +21,7 @@ def generate_signals() -> (np.ndarray):
 
     # Compute the power of the noise
     noise_power = np.sum(np.abs(noise)**2) / len(noise)
+    print(f"noise power: {noise_power}")
 
     # Compute the scaling factor for the noise to achieve the desired SNR
     scale_factor = np.sqrt(signal_power / noise_power / (10**(snr/10)))
@@ -27,8 +29,12 @@ def generate_signals() -> (np.ndarray):
     # Add the noise to the signal
     noisy_signal = signal + noise * scale_factor
 
+    # plt.figure()
+    # plt.plot(t, noisy_signal)
+    # plt.show()
+
     # random_signal = np.random.normal(scale=1, size=len(t))
     # random_signal = random_signal + noise * scale_factor
 
-    return signal, noisy_signal
+    return signal, noisy_signal, noise_power
     

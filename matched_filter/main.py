@@ -1,10 +1,12 @@
 import numpy as np
 
-def compute_threshold(input_signal, filter_length):
+def compute_threshold(noise_power):
     print('Computing threshold...')
-    portion = input_signal[:filter_length]
-    std = np.std(portion)
-    return std
+
+    k = 3 # threshold level
+    threshold = noise_power + k * np.std(noise_power)
+
+    return threshold
 
 
 def matched_filter(s, h):
