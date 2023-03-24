@@ -1,12 +1,24 @@
 import numpy as np
 
-def compute_threshold(noise_power):
+def compute_threshold(s, h):
     print('Computing threshold...')
 
-    k = 3 # threshold level
-    threshold = noise_power + k * np.std(noise_power)
+    s_energy = np.sum(np.square(s))
+    h_energy = np.sum(np.square(h))
+
+    inner_product = np.dot(s, h)
+
+    s_1 = s_energy - inner_product
+    h_1 = inner_product - h_energy
+
+    print(s_1, h_1)
+
+    sum = s_1 + h_1
+
+    threshold = sum / 2
 
     return threshold
+
 
 
 def matched_filter(s, h):
