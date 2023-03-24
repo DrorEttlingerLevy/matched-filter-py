@@ -1,10 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def generate_signals():
+def generate_signals(filePath):
     snr = 10
 
-    with open('signals/signal_74k.txt', 'r') as file:
+    with open(filePath, 'r') as file:
         contents = file.read()
     
     signal = np.array([float(x) for x in contents.split()])
@@ -27,8 +27,8 @@ def generate_signals():
 
     time = [t for t in range(len(signal))]
 
-    random_signal = np.random.normal(scale=1, size=len(time))
-    random_signal = random_signal + noise * scale_factor
+    # random_signal = np.random.normal(scale=1, size=len(time))
+    # random_signal = random_signal + noise * scale_factor
 
     _, (ax1, ax2) = plt.subplots(2, 1)
 
@@ -45,4 +45,4 @@ def generate_signals():
     plt.tight_layout()
     plt.show()
 
-    return signal, random_signal
+    return signal, noisy_signal
