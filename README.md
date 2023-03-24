@@ -12,6 +12,16 @@ For reference: [Matched Filter](https://en.wikipedia.org/wiki/Matched_filter)
 # Usage
 The program can be simply executed with:
 ```
-python main.py
+python main.py -f [path to input file]
 ```
-from the main folder.
+from the main folder. Here some example input files are provided in the `/signal` folder.
+
+For testing the case of unsuccesful detection, uncomment the following lines in `signal_generator.py`:
+```
+    # random_signal = np.random.normal(scale=1, size=len(time))
+    # random_signal = random_signal + noise * scale_factor
+```
+and then make the function return `random_signal` instead of `noisy_signal`.
+
+# Output
+The program plots the reference signal and its noisy version, then outputs a message of succesful or unsuccesful detection.
