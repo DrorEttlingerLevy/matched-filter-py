@@ -9,4 +9,9 @@ The matched filter maximized the output if the desider waveform is present in th
 
 For reference: [Matched Filter](https://en.wikipedia.org/wiki/Matched_filter)
 
-# ! WORK IN PROGRESS !
+# Usage
+The program can be simply executed with:
+```
+python main.py
+```
+from the main folder.
