@@ -19,6 +19,8 @@ def main():
     else:
         print("Signal not detected")
 
+    sg.read_signal()
+
 
 if __name__ == '__main__':
     main()

@@ -38,3 +38,42 @@ def generate_signals():
 
     return signal, noisy_signal, noise_power
     
+
+def read_signal():
+    with open('signal_4k.txt', 'r') as file:
+        contents = file.read()
+    
+    signal = [float(x) for x in contents.split()]
+
+    time = [t for t in range(len(signal))]
+
+    # Close the file
+    file.close()
+
+    noise = np.random.normal(scale=1, size=len(signal))
+
+    # Compute the power of the signal
+    signal_power = np.sum(np.abs(signal)**2) / len(signal)
+
+    # Compute the power of the noise
+    noise_power = np.sum(np.abs(noise)**2) / len(noise)
+
+    scale_factor = np.sqrt(signal_power / noise_power / (10**(10/10)))
+
+    # Add the noise to the signal
+    noisy_signal = signal + noise * scale_factor
+
+    fig, (ax1, ax2) = plt.subplots(2, 1)
+
+    ax1.plot(time, signal)
+    ax1.set_xlabel('Time')
+    ax1.set_ylabel('Clean Signal Amplitude')
+    ax1.set_title('Clean Signal Plot')
+
+    ax2.plot(time, noisy_signal)
+    ax2.set_xlabel('Time')
+    ax2.set_ylabel('Noisy Signal Amplitude')
+    ax2.set_title('Noisy Signal Plot')
+
+    plt.tight_layout()
+    plt.show()
