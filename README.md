@@ -1,4 +1,4 @@
-# matched-filter-py
+# Matched Filter Py
 
 This simple project features a Python implementation of a matched filter for signal detection in the domain of frequency.
 A matched filter is a signal processing filter used to detect the presence of a specific known signal (or pattern) in a noisy signal. It is called a "matched" filter because it is designed to match the expected signal pattern, so it is sensitive to the signal and insensitive to other noise-like signals. If the input signal contains the same waveform as the template, the output will be maximized. If the input signal contains a different waveform, the output will be minimized.
