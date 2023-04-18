@@ -2,12 +2,15 @@
 import matched_filter.main as matf
 import signal_generator as sg
 import argparse, os
+import time
+import numpy as np
 
 def isFileInput(input):
     return os.path.exists(input)
 
 
 def main():
+    start_time = time.time()
 
     parser = argparse.ArgumentParser()
     parser.add_argument("-f", "--file", help="path to input file", required = True)
@@ -24,7 +27,7 @@ def main():
     threshold = matf.compute_threshold(input_signal, filter_impulse_response)
     print(f"\nthreshold: {threshold}")
 
-    peak = max(y)
+    peak = np.amax(y)
     print(f"output peak: {peak}")
 
     if peak > threshold:
@@ -32,7 +35,10 @@ def main():
     else:
         print("\n*** Signal not detected ***")
 
+    end_time = time.time()
+    elapsed_time_ms = (end_time - start_time) * 1000
+
+    print(f"Elapsed time: {elapsed_time_ms:-3f}ms")
 
 if __name__ == '__main__':
     main()
-    

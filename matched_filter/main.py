@@ -6,23 +6,13 @@ def compute_threshold(s, h):
     s_energy = np.sum(np.square(s))
     h_energy = np.sum(np.square(h))
 
-    inner_product = np.dot(s, h)
-
-    s_1 = s_energy - inner_product
-    h_1 = inner_product - h_energy
-
-    sum = s_1 + h_1
+    sum = s_energy - h_energy
 
     return sum / 2
 
 
 
 def matched_filter(s, h):
-    diff = len(s) - len(h) # We assume that len(s) >= len(h)
-
-    # Zero-padding of the input signal
-    h = np.pad(h, (0, diff), 'constant')
-
     # Compute the Fourier transform of padded_input and padded_filter
     S = np.fft.fft(s)
     H = np.fft.fft(h)
