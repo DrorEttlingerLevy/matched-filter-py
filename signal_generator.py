@@ -27,8 +27,8 @@ def generate_signals(filePath):
 
     time = [t for t in range(len(signal))]
 
-    # random_signal = np.random.normal(scale=1, size=len(time))
-    # random_signal = random_signal + noise * scale_factor
+    #random_signal = np.random.normal(scale=1, size=len(time))
+    #random_signal = random_signal + noise * scale_factor
 
     _, (ax1, ax2) = plt.subplots(2, 1)
 
